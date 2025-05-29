@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>264</title>
+  <link rel="icon" href="favicon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbit&display=swap" rel="stylesheet">
+
+  <style>
+    @font-face {
+      font-family: 'BookkMyungjo-Bd';
+      src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/BookkMyungjo-Bd.woff2') format('woff2');
+      font-weight: 700;
+      font-style: normal;
+    }
+    html {font-family:'BookkMyungjo-Bd', serif;
+          font-weight: 700;
+          font-style: normal;
+          word-break: keep-all;}
+    body, nav, header, h1, h2, h3, h4, h5, p {margin: 0; padding: 0}
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: #000;
+        color: #fff;
+        font-family: 'Orbit', sans-serif;
+        line-height: 1.7;
+        height: 100vh; 
+        overflow: hidden;
+        }
+
+    h1 {
+      font-family: 'BookkMyungjo-Bd', serif; 
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    p.poem {
+      font-family: 'BookkMyungjo-Bd', serif; 
+      font-size: 1.3rem;
+      white-space: pre-line;
+    }
+
+    .wrap {width: 100vw;overflow: hidden;}
+
+nav {
+      position: sticky;
+      top: 0;
+      background-color: #000000;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+      z-index: 3000;
+      padding: 1rem 0;
+    }
+
+    .navbar-container {
+      width: 1000px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo a {
+      font-family: 'BookkMyungjo-Bd', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #ffffff;
+      text-decoration: none;
+      letter-spacing: -0.5px }
+
+    .navbar {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+      padding: 0;
+      margin: 0; }
+
+    .navbar a {
+      position: relative;
+      font-family: 'Orbit', sans-serif;
+      font-size: 0.95rem;
+      text-decoration: none;
+      color: #ffffff;
+      transition: color 0.2s ease;}
+
+    .navbar a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: #ffffff;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;}
+
+    .navbar a:hover::after {
+      transform: scaleX(1);
+    }
+ .timeline {
+      display: flex;
+      flex-direction: row;
+      overflow-x: auto;
+      height: calc(100vh - 60px); 
+      scroll-snap-type: x mandatory;
+    }
+
+
+    .column {
+      flex: 0 0 320px;
+      height: 100%;
+      padding: 2rem 1rem;
+      box-sizing: border-box;
+      scroll-snap-align: start;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .top h3 {
+  font-family: 'BookkMyungjo-Bd', serif;
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: #eee;
+}
+
+
+    .top p {
+      font-size: 0.9rem;
+      line-height: 1.5;
+      color: #ccc;
+    }
+
+    .bottom {
+      font-size: 0.95rem;
+      font-weight: bold;
+      border-top: 1px solid rgba(255,255,255,0.2);
+      padding-top: 1rem;
+    }
+
+    /* 배경 색이다ㅏ다다다ㅏ닫다 */
+    .y1904 { background: #1a1a1a; }  /* 암흑 시작 */
+.y1909 { background: #1e1e1e; }
+.y1916 { background: #222222; }
+.y1919 { background: #262626; }
+.y1920 { background: #2a2a2a; }
+.y1921 { background: #2e2e2e; }
+.y1923 { background: #313131; }
+.y1924 { background: #353535; }
+.y1925 { background: #393939; }
+.y1926 { background: #3c3c3c; }
+.y1927 { background: #404040; }
+.y1929 { background: #444444; }
+.y1930 { background: #474747; }
+.y1931 { background: #4b4b4b; }
+.y1932 { background: #4f4f4f; }
+.y1933 { background: #525252; }
+.y1934 { background: #565656; }
+.y1935 { background: #5a5a5a; }
+.y1936 { background: #5e5e5e; }
+.y1937 { background: #616161; }
+.y1938 { background: #656565; }
+.y1939 { background: #393e46; }  
+.y1940 { background: #494e56; }
+.y1941 { background: #595e66; }
+.y1942 { background: #696e76; }
+.y1943 { background: #2b2d42; }  
+.y1944 { background: #3a4750; }  
+.y1945 { background: #3f4f58; }
+.y1946 { background: #445760; }
+.y1968 { background: #4a5f68; }
+.y2004 { background: #506770; } 
+  </style>
+</head>
+<body>
+    <nav>
+        <div class="navbar-container">
+          <div class="logo"><a href="index.html">이원록에서 이육사까지</a></div>
+          <ul class="navbar">
+            <li><a href="timeline.html">연보</a></li>
+            <li><a href="works.html">작품</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <section class="wrap">
+        <div class="timeline">
+      
+          <div class="column y1904">
+            <div class="top">
+              <h3>1904</h3>
+              <p>경북 안동 진성이씨 가문에서 출생<br>본명 이원록, 자 태경</p>
+            </div>
+            <div class="bottom">0세</div>
+          </div>
+          <div class="column y1909">
+            <div class="top">
+              <h3>1909</h3>
+              <p>조부 이중직에게 소학 배우기 시작.</p>
+            </div>
+            <div class="bottom">5세</div>
+          </div>
+          
+          <div class="column y1916">
+            <div class="top">
+              <h3>1916</h3>
+              <p>조부 별세, 가세 기울기 시작. 보문의숙 수학.</p>
+            </div>
+            <div class="bottom">12세</div>
+          </div>
+          
+          <div class="column y1919">
+            <div class="top">
+              <h3>1919</h3>
+              <p>도산공립보통학교 졸업.</p>
+            </div>
+            <div class="bottom">15세</div>
+          </div>
+          
+          <div class="column y1920">
+            <div class="top">
+              <h3>1920</h3>
+              <p>결혼. 가족 대구 이사. 서병오에게 그림 배움.</p>
+            </div>
+            <div class="bottom">16세</div>
+          </div>
+          
+      
+          <div class="column y1925">
+            <div class="top">
+              <h3>1925</h3>
+              <p>의열단 가입<br>중국대학 상과 입학</p>
+            </div>
+            <div class="bottom">21세</div>
+          </div>
+        
+          <div class="column y1930">
+            <div class="top">
+              <h3>1930</h3>
+              <p>첫 시 「말」을 조선일보에 발표 <br>아들 동윤(東胤) 태어나다.(만 2세에 사망) 광주학생항일투쟁이 파급되자 1월 10일 대구청년동맹 간부로서 붙잡히고, 19일 풀려남. 2월 중외일보 대구기자로 임용. 3월 대구경찰서에 붙잡혔다가 풀려남. 10월 《별건곤(別乾坤)》에 이활(李活), 대구이육사(大邱二六四) 이름으로 '대구사회단체개관(大邱社會團體槪觀)' 발표</p>
+            </div>
+            <div class="bottom">26세</div>
+          </div>
+      
+          
+          <div class="column y1935">
+            <div class="top">
+              <h3>1935</h3>
+              <p>
+                「春愁三題」 - 신조선 6<br>
+                「黃昏」 - 신조선 12
+              </p>
+            </div>
+            <div class="bottom">31세</div>
+          </div>
+          
+          <div class="column y1936">
+            <div class="top">
+              <h3>1936</h3>
+              <p>
+                「失題」 - 신조선 1<br>
+                「한 개의 별을 노래하자」 - 風林 12
+              </p>
+            </div>
+            <div class="bottom">32세</div>
+          </div>
+          
+          <div class="column y1939">
+            <div class="top">
+              <h3>1939</h3>
+              <p>
+                「年譜」 - 詩學 3<br>
+                「南漢山城」 - 批判 3<br>
+                「湖水」 - 詩學 6<br>
+                「靑葡萄」 - 文章 8
+              </p>
+            </div>
+            <div class="bottom">35세</div>
+          </div>
+          
+          <div class="column y1940">
+            <div class="top">
+              <h3>1940</h3>
+              <p>
+                「絶頂」 - 文章 1<br>
+                「班描」 - 人文評論 3<br>
+                「狂人의 太陽」 - 조선일보 4.27<br>
+                「日蝕」 - 文章 5<br>
+                「喬木」 - 人文評論 9<br>
+                「西風」 - 三千里 10
+              </p>
+            </div>
+            <div class="bottom">36세</div>
+          </div>
+          
+          <div class="column y1943">
+            <div class="top">
+              <h3>1943</h3>
+              <p>「광야」 창작<br>항일 활동 중 체포되어 베이징 수감</p>
+            </div>
+            <div class="bottom">39세</div>
+          </div>
+
+          <div class="column y1944">
+            <div class="top">
+              <h3>1944</h3>
+              <p>1월 16일, 옥중 순국<br>
+            </div>
+            <div class="bottom">40세</div>
+          </div>
+
+          <div class="column y1945">
+            <div class="top">
+              <h3>1945</h3>
+              <p>
+                「광야」<br>
+                「꽃」 - 자유신문 (12.17)
+              </p>
+            </div>
+            <div class="bottom">해방 이후</div>
+          </div>
+          
+          <div class="column y1946">
+            <div class="top">
+              <h3>1946</h3>
+              <p>
+                「소년에게」<br>
+                「邂逅」<br>
+                「나의 뮤즈」<br>
+                「바다의 마음」 (편복)
+              </p>
+            </div>
+            <div class="bottom">유고 시집 출간</div>
+          </div>
+          
+        
+    
+      
+         
+          
+      
+        </div>
+      </section>
+
+      <div style="position: fixed; right: 0; top: 45px; background:black; padding: 1rem; z-index: 999; display: flex; flex-direction: column; gap: 0.5rem; max-height: 100vh; overflow-y: auto;">
+        <a href="#y1904" style="color: white; text-decoration: none;">1904</a>
+        <a href="#y1909" style="color: white; text-decoration: none;">1909</a>
+        <a href="#y1916" style="color: white; text-decoration: none;">1916</a>
+        <a href="#y1919" style="color: white; text-decoration: none;">1919</a>
+        <a href="#y1920" style="color: white; text-decoration: none;">1920</a>
+        <a href="#y1921" style="color: white; text-decoration: none;">1921</a>
+        <a href="#y1923" style="color: white; text-decoration: none;">1923</a>
+        <a href="#y1924" style="color: white; text-decoration: none;">1924</a>
+        <a href="#y1925" style="color: white; text-decoration: none;">1925</a>
+        <a href="#y1926" style="color: white; text-decoration: none;">1926</a>
+        <a href="#y1927" style="color: white; text-decoration: none;">1927</a>
+        <a href="#y1929" style="color: white; text-decoration: none;">1929</a>
+        <a href="#y1930" style="color: white; text-decoration: none;">1930</a>
+        <a href="#y1931" style="color: white; text-decoration: none;">1931</a>
+        <a href="#y1932" style="color: white; text-decoration: none;">1932</a>
+        <a href="#y1933" style="color: white; text-decoration: none;">1933</a>
+        <a href="#y1934" style="color: white; text-decoration: none;">1934</a>
+        <a href="#y1935" style="color: white; text-decoration: none;">1935</a>
+        <a href="#y1936" style="color: white; text-decoration: none;">1936</a>
+        <a href="#y1937" style="color: white; text-decoration: none;">1937</a>
+        <a href="#y1938" style="color: white; text-decoration: none;">1938</a>
+        <a href="#y1939" style="color: white; text-decoration: none;">1939</a>
+        <a href="#y1940" style="color: white; text-decoration: none;">1940</a>
+        <a href="#y1941" style="color: white; text-decoration: none;">1941</a>
+        <a href="#y1942" style="color: white; text-decoration: none;">1942</a>
+        <a href="#y1943" style="color: white; text-decoration: none;">1943</a>
+        <a href="#y1944" style="color: white; text-decoration: none;">1944</a>
+        <a href="#y1946" style="color: white; text-decoration: none;">1946</a>
+
+      </div>
+      <script>
+        // 모든 링크에 이벤트 리스너 추가
+        document.querySelectorAll('[href^="#y"]').forEach(link => {
+          link.addEventListener('click', function(e) {
+            e.preventDefault(); // 기본 앵커 동작 막기
+      
+            const targetId = this.getAttribute('href').substring(1); // yxxxx
+            const targetElement = document.querySelector(`.${targetId}`);
+      
+            if (targetElement) {
+              targetElement.scrollIntoView({
+                behavior: 'smooth',
+                inline: 'start',
+                block: 'nearest' // 세로 스크롤 방지
+              });
+            }
+          });
+        });
+      </script>
+</body>
+</html>
+  

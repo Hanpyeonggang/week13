@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>광야</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbit&display=swap" rel="stylesheet">
+  <style>
+    @font-face {
+      font-family: 'BookkMyungjo-Bd';
+      src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/BookkMyungjo-Bd.woff2') format('woff2');
+      font-weight: 700;
+      font-style: normal;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'BookkMyungjo-Bd', serif;
+      color: #fff;
+      background: url('gwangya.jpg') no-repeat center center fixed;
+      background-size: cover;
+      overflow: hidden;
+      word-break: keep-all;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      background-color: #000;
+      z-index: 3000;
+      padding: 1.3rem 0;
+    }
+
+    .wrap {
+      width: 1000px;
+      margin: auto;
+    }
+    .navbar-container {
+      width: 1000px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo a {
+      font-family: 'BookkMyungjo-Bd', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .navbar {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .navbar a {
+      font-family: 'Orbit', sans-serif;
+      font-size: 0.95rem;
+      text-decoration: none;
+      color: #fff;
+      position: relative;
+    }
+
+    .navbar a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: #fff;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+
+    .navbar a:hover::after {
+      transform: scaleX(1);
+    }
+
+    .toggle-btn {
+      position: fixed;
+      top: 5.5rem;
+      right: 1.5rem;
+      background: #fff;
+      color: #111;
+      border: none;
+      padding: 0.5rem 1rem;
+      font-size: 0.9rem;
+      cursor: pointer;
+      border-radius: 4px;
+      z-index: 2500;
+      font-family: 'Orbit', sans-serif;
+    }
+
+    .toggle-btn::after {
+      content: ' ▶';
+      font-size: 0.85rem;
+    }
+
+    .container {
+      display: flex;
+      height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .content {
+      flex: 1;
+      height: 100vh;
+      overflow-y: scroll;
+      padding: 8vw 5vw;
+      background: rgba(0, 0, 0, 0.3);
+      box-sizing: border-box;
+    }
+
+    .title {
+      font-size: 5rem;
+      margin-bottom: 2rem;
+    }
+
+    .poem {
+      font-size: 2.5vw;
+      line-height: 1.7;
+      white-space: pre-line;
+    }
+
+    .info-panel {
+      position: fixed;
+      top: 4rem;
+      right: 0;
+      width: 400px;
+      height: calc(100vh - 4rem);
+      background-color: rgba(34, 34, 34, 0.85);
+      backdrop-filter: blur(12px);
+      padding: 2rem 2rem 4rem;
+      box-sizing: border-box;
+      transform: translateX(100%);
+      transition: transform 0.4s ease;
+      overflow-y: auto;
+      z-index: 2000;
+      font-family: 'Orbit', sans-serif;
+      font-size: 1rem;
+      line-height: 1.8;
+      color: #fff;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+      background-size: 20px 20px;
+    }
+
+    .info-panel.open {
+      transform: translateX(0%);
+    }
+
+    .info-panel h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1.2rem;
+      font-family: 'BookkMyungjo-Bd', serif;
+    }
+
+    .section-title {
+      font-size: 1rem;
+      margin-top: 2rem;
+      margin-bottom: 0.6rem;
+      font-weight: bold;
+      color: #ccc;
+    }
+
+    .keywords {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+
+    .keyword {
+      background-color: #444;
+      padding: 0.4rem 0.8rem;
+      border-radius: 16px;
+      font-size: 0.85rem;
+      color: #eee;
+    }
+
+    .info-panel a {
+      color: #4fc3f7;
+      text-decoration: none;
+    }
+
+    .info-panel a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="navbar-container">
+      <div class="logo"><a href="index.html">이원록에서 이육사까지</a></div>
+      <ul class="navbar">
+        <li><a href="timeline.html">연보</a></li>
+        <li><a href="works.html">작품</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <button class="toggle-btn" onclick="togglePanel()">설명 보기</button>
+
+  <div class="container">
+    <div class="content">
+      <div class="wrap">
+        <div class="title">광야</div>
+        <div class="poem">
+까마득한 날에  
+하늘이 처음 열리고  
+어디 닭 우는 소리 들렸으랴.  
+
+모든 산맥들이  
+바다를 연모해 휘달릴 때도  
+차마 이 곳을 범하던 못하였으리라.  
+
+끊임없는 광음을  
+부지런한 계절이 피어선 지고  
+큰 강물이 비로소 길을 열었다.  
+
+지금 눈 내리고  
+매화 향기 홀로 아득하니  
+내 여기 가난한 노래의 씨를 뿌려라.  
+
+다시 천고의 뒤에  
+백마 타고 오는 초인이 있어  
+이 광야에서 목놓아 부르게 하리라
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="info-panel" id="infoPanel">
+    <h2>해설</h2>
+    <p>
+      「광야」는 민족의 운명과 역사를 근원에서부터 되짚는 서사적 시입니다.<br>
+      시인은 광야를 시발점으로 삼아 민족의 고통, 저항, 그리고 궁극적 구원까지 포괄적인 전망을 담고 있습니다.<br>
+      마지막 구절의 ‘초인’은 민족 해방의 지도자이자 이상적 인간상을 의미하며, 미래를 향한 희망의 메시지를 전달합니다.
+    </p>
+
+    <div class="section-title">키워드</div>
+    <div class="keywords">
+      <div class="keyword">#역사</div>
+      <div class="keyword">#민족</div>
+      <div class="keyword">#광야</div>
+      <div class="keyword">#초인</div>
+      <div class="keyword">#희망</div>
+    </div>
+
+    <div class="section-title">관련 작품</div>
+    <div>
+      <a href="cheongpodo.html">청포도</a><br>
+      <a href="jeoljeong.html">절정</a><br>
+      <a href="ilshik.html">일식</a>
+    </div>
+  </div>
+
+  <script>
+    function togglePanel() {
+      const panel = document.getElementById("infoPanel");
+      panel.classList.toggle("open");
+    }
+  </script>
+</body>
+</html>

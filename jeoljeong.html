@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>절정</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbit&display=swap" rel="stylesheet">
+  <style>
+    @font-face {
+      font-family: 'BookkMyungjo-Bd';
+      src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/BookkMyungjo-Bd.woff2') format('woff2');
+      font-weight: 700;
+      font-style: normal;
+    }
+    html {
+      font-family:'BookkMyungjo-Bd', serif;
+      font-weight: 700;
+      font-style: normal;
+      word-break: keep-all;}
+    body {
+      margin: 0;
+      font-family: 'BookkMyungjo-Bd', serif;
+      color: #fff;
+      background: url('jeoljeong.jpg') no-repeat center center fixed;
+      background-size: cover;
+      overflow: hidden;
+      word-break: keep-all;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      background-color: #000;
+      z-index: 3000;
+      padding: 1.3rem 0;
+    }
+    .wrap {
+      width: 1000px;
+      margin: auto;
+    }
+
+    .navbar-container {
+      width: 1000px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo a {
+      font-family: 'BookkMyungjo-Bd', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .navbar {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .navbar a {
+      font-family: 'Orbit', sans-serif;
+      font-size: 0.95rem;
+      text-decoration: none;
+      color: #fff;
+      position: relative;
+    }
+
+    .navbar a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: #fff;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+
+    .navbar a:hover::after {
+      transform: scaleX(1);
+    }
+
+    .toggle-btn {
+      position: fixed;
+      top: 5.5rem;
+      right: 1.5rem;
+      background: #fff;
+      color: #111;
+      border: none;
+      padding: 0.5rem 1rem;
+      font-size: 0.9rem;
+      cursor: pointer;
+      border-radius: 4px;
+      z-index: 2500;
+      font-family: 'Orbit', sans-serif;
+    }
+
+    .toggle-btn::after {
+      content: ' ▶';
+      font-size: 0.85rem;
+    }
+
+    .container {
+      display: flex;
+      height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .content {
+      flex: 1;
+      height: 100vh;
+      overflow-y: scroll;
+      padding: 8vw 5vw;
+      background: rgba(0, 0, 0, 0.3);
+      box-sizing: border-box;
+    }
+
+    .title {
+      font-size: 5rem;
+      margin-bottom: 2rem;
+    }
+
+    .poem {
+      font-size: 2.5vw;
+      line-height: 1.7;
+      white-space: pre-line;
+      word-break: keep-all;
+    }
+    .info-panel {
+    position: fixed;
+    top: 4rem; 
+    right: 0;
+    width: 400px;
+    height: calc(100vh - 4rem); 
+    background-color: rgba(34, 34, 34, 0.85);
+    backdrop-filter: blur(12px);
+    padding: 2rem 2rem 4rem;
+    box-sizing: border-box;
+    transform: translateX(100%);
+    transition: transform 0.4s ease;
+    overflow-y: auto;
+    z-index: 2000;
+    font-family: 'Orbit', sans-serif;
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #fff;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+
+    .info-panel.open {
+      transform: translateX(0%);
+    }
+
+    .info-panel h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1.2rem;
+      font-family: 'BookkMyungjo-Bd', serif;
+    }
+
+    .section-title {
+      font-size: 1rem;
+      margin-top: 2rem;
+      margin-bottom: 0.6rem;
+      font-weight: bold;
+      color: #ccc;
+    }
+
+    .keywords {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+
+    .keyword {
+      background-color: #444;
+      padding: 0.4rem 0.8rem;
+      border-radius: 16px;
+      font-size: 0.85rem;
+      color: #eee;
+    }
+
+    .info-panel a {
+      color: #4fc3f7;
+      text-decoration: none;
+    }
+
+    .info-panel a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="navbar-container">
+      <div class="logo"><a href="index.html">이원록에서 이육사까지</a></div>
+      <ul class="navbar">
+        <li><a href="timeline.html">연보</a></li>
+        <li><a href="works.html">작품</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <button class="toggle-btn" onclick="togglePanel()">설명 보기</button>
+
+  <div class="container">
+    <div class="content">
+      <div class="wrap">
+        <div class="title">절정</div>
+        <div class="poem">
+매운 계절의 채찍에 갈겨  
+마침내 북방으로 휩쓸려 오다.
+
+하늘도 그만 지쳐 끝난 고원  
+서릿발 칼날진 그 위에 서다.
+
+어디다 무릎을 꿇어야 하나  
+한 발 재겨 디딜 곳조차 없다.
+
+이러매 눈 감아 생각해 볼밖에  
+겨울은 강철로 된 무지갠가 보다.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="info-panel" id="infoPanel">
+    <h2>해설</h2>
+    <p>
+      「절정」은 극한의 상황에서도 의지를 꺾지 않는 시인의 정신을 담고 있는 작품입니다.<br>
+      북방, 고원, 서릿발 같은 상징은 척박하고 차가운 현실을, 무지개는 희망의 상징을 의미합니다.<br>
+      겨울을 강철로 된 무지개로 비유한 마지막 구절은 시인의 결연한 태도를 드러냅니다.
+    </p>
+
+    <div class="section-title">키워드</div>
+    <div class="keywords">
+      <div class="keyword">#의지</div>
+      <div class="keyword">#겨울</div>
+      <div class="keyword">#무지개</div>
+      <div class="keyword">#고통</div>
+      <div class="keyword">#극복</div>
+    </div>
+
+    <div class="section-title">관련 작품</div>
+    <div>
+      <a href="cheongpodo.html">청포도</a><br>
+      <a href="gwangya.html">광야</a><br>
+      <a href="ilshik.html">일식</a>
+    </div>
+  </div>
+
+  <script>
+    function togglePanel() {
+      const panel = document.getElementById("infoPanel");
+      panel.classList.toggle("open");
+    }
+  </script>
+</body>
+</html>

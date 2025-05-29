@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>노정기</title>
+  <link rel="icon" href="favicon.png" type="image/png">
+  <link href="https://fonts.googleapis.com/css2?family=Orbit&display=swap" rel="stylesheet">
+  <style>
+    @font-face {
+      font-family: 'BookkMyungjo-Bd';
+      src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/BookkMyungjo-Bd.woff2') format('woff2');
+      font-weight: 700;
+      font-style: normal;
+    }
+
+    body {
+    margin: 0;
+    font-family: 'BookkMyungjo-Bd', serif;
+    color: #fff;
+    background: url('nojeong.jpg') center top no-repeat;
+    background-size: 100% auto;
+    background-attachment: fixed; 
+    word-break: keep-all;
+    }
+    nav {
+      position: sticky;
+      top: 0;
+      background-color: #000;
+      z-index: 3000;
+      padding: 1.3rem 0;
+    }
+
+    .wrap {
+      width: 1000px;
+      margin: auto;
+    }
+
+    .navbar-container {
+      width: 1000px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo a {
+      font-family: 'BookkMyungjo-Bd', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .navbar {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .navbar a {
+      font-family: 'Orbit', sans-serif;
+      font-size: 0.95rem;
+      text-decoration: none;
+      color: #fff;
+      position: relative;
+    }
+
+    .navbar a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: #fff;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+
+    .navbar a:hover::after {
+      transform: scaleX(1);
+    }
+
+    .toggle-btn {
+      position: fixed;
+      top: 5.5rem;
+      right: 1.5rem;
+      background: #fff;
+      color: #111;
+      border: none;
+      padding: 0.5rem 1rem;
+      font-size: 0.9rem;
+      cursor: pointer;
+      border-radius: 4px;
+      z-index: 2500;
+      font-family: 'Orbit', sans-serif;
+    }
+
+    .toggle-btn::after {
+      content: ' ▶';
+      font-size: 0.85rem;
+    }
+
+    .container {
+      display: flex;
+    }
+
+    .content {
+      flex: 1;
+      padding: 8vw 5vw;
+      background: rgba(0, 0, 0, 0.3);
+      box-sizing: border-box;
+    }
+
+    .title {
+      font-size: 5rem;
+      margin-bottom: 2rem;
+    }
+
+    .poem {
+      font-size: 2.5vw;
+      line-height: 1.7;
+      white-space: pre-line;
+    }
+
+    .info-panel {
+      position: fixed;
+      top: 4rem;
+      right: 0;
+      width: 400px;
+      height: calc(100vh - 4rem);
+      background-color: rgba(34, 34, 34, 0.85);
+      backdrop-filter: blur(12px);
+      padding: 2rem 2rem 4rem;
+      box-sizing: border-box;
+      transform: translateX(100%);
+      transition: transform 0.4s ease;
+      overflow-y: auto;
+      z-index: 2000;
+      font-family: 'Orbit', sans-serif;
+      font-size: 1rem;
+      line-height: 1.8;
+      color: #fff;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+      background-size: 20px 20px;
+    }
+
+    .info-panel.open {
+      transform: translateX(0%);
+    }
+
+    .info-panel h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1.2rem;
+      font-family: 'BookkMyungjo-Bd', serif;
+    }
+
+    .section-title {
+      font-size: 1rem;
+      margin-top: 2rem;
+      margin-bottom: 0.6rem;
+      font-weight: bold;
+      color: #ccc;
+    }
+
+    .keywords {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+
+    .keyword {
+      background-color: #444;
+      padding: 0.4rem 0.8rem;
+      border-radius: 16px;
+      font-size: 0.85rem;
+      color: #eee;
+    }
+
+    .info-panel a {
+      color: #4fc3f7;
+      text-decoration: none;
+    }
+
+    .info-panel a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="navbar-container">
+      <div class="logo"><a href="index.html">이원록에서 이육사까지</a></div>
+      <ul class="navbar">
+        <li><a href="timeline.html">연보</a></li>
+        <li><a href="works.html">작품</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <button class="toggle-btn" onclick="togglePanel()">설명 보기</button>
+
+  <div class="container">
+    <div class="content">
+      <div class="wrap">
+        <div class="title">노정기</div>
+        <div class="poem">
+            목숨이란 마-치 께여진 배쪽각
+            여기저기 흐터저 마을이 한구죽죽한 漁村보다 어설푸고
+            삶의 틔끌만 오래묵은 布帆처름 달어매엿다.
+            
+            남들은 깃벗다는 젊은날이엿건만
+            밤마다 내꿈은 西海를密航하는 「쩡크」와 갓해
+            소금에 짤고 湖水에 부프려 올넛다.
+            
+            항상 흐렷한밤 暗礁를 버서나면 颱風과 싸워가고
+            傳說에 읽어본 珊瑚島는 구경도 못하는
+            그곳은 南十字星이 빈저주도 안엇다.
+            
+            ᄶᅩᆺ기는 마음! 지친 몸이길래
+            그리운 地平線을 한숨에 기오르면
+            시궁치는 熱帶植物처름 발목을 오여쌋다.
+            
+            새벽 밀물에 밀여온 거믜인양
+            다삭어빠진 소라 깍질에 나는 부터왓다
+            머!ㄴ港口의 路程에 흘너간 生活을 드려다보며
+            
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="info-panel" id="infoPanel">
+    <h2>해설</h2>
+    <p>
+      「노정기(路程記)」는 이육사의 대표적 산문시 중 하나로, 그의 체험적 삶과 조국의 현실을 직조하듯 풀어낸 작품입니다.<br>
+      '길'은 단순한 이동이 아니라 존재의 항로, 민족의 운명을 상징하며, 그의 현실 인식과 저항 정신이 은유적으로 담겨 있습니다.
+    </p>
+
+    <div class="section-title">키워드</div>
+    <div class="keywords">
+      <div class="keyword">#길</div>
+      <div class="keyword">#여정</div>
+      <div class="keyword">#저항</div>
+      <div class="keyword">#현실인식</div>
+      <div class="keyword">#운명</div>
+    </div>
+
+    <div class="section-title">관련 작품</div>
+    <div>
+      <a href="gwangya.html">광야</a><br>
+      <a href="gang.html">강 건너간 노래</a><br>
+      <a href="cheongpodo.html">청포도</a>
+    </div>
+  </div>
+
+  <script>
+    function togglePanel() {
+      const panel = document.getElementById("infoPanel");
+      panel.classList.toggle("open");
+    }
+  </script>
+</body>
+</html>
